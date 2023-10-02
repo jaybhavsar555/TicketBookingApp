@@ -1,6 +1,6 @@
 # ticketbookapp
 
-Flight Ticket Booking Application.
+Ticket Booking Application.where user can book tickets for buses, flights and hotel at one place.
 
 ## Getting Started
 
