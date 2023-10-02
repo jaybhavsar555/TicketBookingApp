@@ -9,6 +9,8 @@ class Styles{
   static Color bgColor=const Color(0xffd7e5f6);
   static Color orangeColor=const Color(0xffd75221);
   static TextStyle textStyle1=TextStyle(fontSize: 16, color: textColor,fontWeight: FontWeight.w500);
+  static TextStyle ticketTextStyle1= const TextStyle(fontSize: 16, color: Colors.white,fontWeight: FontWeight.w600);
+
   static TextStyle textHeadStyle1=TextStyle(fontSize: 26, color: textColor,fontWeight: FontWeight.bold);
   static TextStyle textHeadStyle2=TextStyle(fontSize: 21, color: textColor,fontWeight: FontWeight.bold);
   static TextStyle textHeadStyle3= TextStyle(fontSize: 17, color: Colors.grey.shade700,fontWeight: FontWeight.w800);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:ticketbookapp/screens/ticket_view.dart';
 import 'package:ticketbookapp/utils/app_style.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -18,7 +19,7 @@ class MyHomePage extends StatelessWidget {
               child:  Column(
 
                 children: [
-                  const Gap(60),
+                  const Gap(80),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -46,7 +47,7 @@ class MyHomePage extends StatelessWidget {
 
                     ],
                   ),
-                   const Gap(25),
+                   const Gap(30),
                    Container(
                      decoration: BoxDecoration(
                        borderRadius:  BorderRadius.circular(15),
@@ -63,7 +64,7 @@ class MyHomePage extends StatelessWidget {
                       ],
                   ),
                    ),
-                      const Gap(10),
+                      const Gap(30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -80,7 +81,10 @@ class MyHomePage extends StatelessWidget {
 
                 ],
               ),
-            )
+            ),
+
+              const Gap(15),
+              TicketView(),
             ],
           ),
 
