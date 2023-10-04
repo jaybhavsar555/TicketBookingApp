@@ -7,7 +7,7 @@ class Styles{
   static Color primaryColor=primary;
   static Color textColor=const Color(0xff000000);
   static Color bgColor=const Color(0xffd7e5f6);
-  static Color orangeColor=const Color(0xffd75221);
+  static Color orangeColor=const Color(0xffd5593d);
   static TextStyle textStyle1=TextStyle(fontSize: 16, color: textColor,fontWeight: FontWeight.w500);
   static TextStyle ticketTextStyle1= const TextStyle(fontSize: 16, color: Colors.white,fontWeight: FontWeight.w600);
 
