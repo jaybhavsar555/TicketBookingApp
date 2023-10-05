@@ -15,7 +15,7 @@ class TicketView extends StatelessWidget {
         height: 200,
 
       child: Container(
-        margin: const EdgeInsets.only(right: 16),
+        margin: const EdgeInsets.only(right: 17),
         child: Column(
           children: [
             /*
@@ -45,7 +45,7 @@ class TicketView extends StatelessWidget {
                           child: LayoutBuilder(
                             builder: (BuildContext context,BoxConstraints constraint) {
                               print("this is width ${constraint.constrainWidth()}");
-                              return Flex(
+                            return Flex(
                                 direction: Axis.horizontal,
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 mainAxisSize: MainAxisSize.max,
@@ -61,7 +61,7 @@ class TicketView extends StatelessWidget {
                             }
                           ),
                         ),
-                     
+
                           Center(child: Transform.rotate(angle: 1.5,child: const Icon(Icons.local_airport,color: Colors.white,),),),
 
                         ]

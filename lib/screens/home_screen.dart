@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticketbookapp/screens/ticket_view.dart';
 import 'package:ticketbookapp/utils/app_style.dart';
+import 'package:ticketbookapp/utils/hotel_info_list.dart';
+
+import 'hotels_view.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -19,7 +22,7 @@ class MyHomePage extends StatelessWidget {
               child:  Column(
 
                 children: [
-                  const Gap(80),
+                  const Gap(50),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -86,15 +89,41 @@ class MyHomePage extends StatelessWidget {
               const Gap(15),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 20),
+                  padding: EdgeInsets.only(left: 17),
                   child:
                   Row(
                     children: [
                       TicketView(),
                       TicketView(),
+                      TicketView(),
                     ],
                   )
               ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Hotels", style: Styles.textHeadStyle2),
+                    InkWell(
+                      onTap: (){
+                        print("To see the hotel");
+                      },
+                      child: Text("view all", style: Styles.textStyle1),
+
+                    ),
+                  ],
+                ),
+              ),
+              Gap(15),
+               SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.only(left: 17),
+
+                child: Row(
+                  children: hotelsList.map((e) => HotelView(hotel: e)).toList(),
+                ),
+              )
             ],
           ),
 
