@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticketbookapp/screens/ticket_view.dart';
+import 'package:ticketbookapp/utils/app_layout.dart';
 import 'package:ticketbookapp/utils/app_style.dart';
 import 'package:ticketbookapp/utils/hotel_info_list.dart';
 
@@ -22,7 +23,7 @@ class MyHomePage extends StatelessWidget {
               child:  Column(
 
                 children: [
-                  const Gap(50),
+                  const Gap(60),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -35,8 +36,8 @@ class MyHomePage extends StatelessWidget {
                         ],
                       ),
                      Container(
-                       width: 50,
-                       height: 50,
+                       width: AppLayout.getWidth(50),
+                       height: AppLayout.getHeight(50),
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(10),
                          image: const DecorationImage(
@@ -57,7 +58,7 @@ class MyHomePage extends StatelessWidget {
                        color: Colors.white
 
                      ),
-                     padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+                     padding:  EdgeInsets.symmetric(horizontal: AppLayout.getWidth(12),vertical: AppLayout.getHeight(12)),
                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -87,20 +88,17 @@ class MyHomePage extends StatelessWidget {
             ),
 
               const Gap(15),
-              const SingleChildScrollView(
+               // for ticket
+               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 17),
+                  padding: EdgeInsets.only(left: AppLayout.getHeight(17)),
                   child:
                   Row(
-                    children: [
-                      TicketView(),
-                      TicketView(),
-                      TicketView(),
-                    ],
-                  )
+                    children: ticketInfo.map((ticket) => TicketView(ticket: ticket)).toList(),
+                  ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding:  EdgeInsets.symmetric(horizontal: AppLayout.getWidth(20)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -116,9 +114,10 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
               Gap(15),
+               //for hotels list
                SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: 17),
+                padding: EdgeInsets.only(left: AppLayout.getHeight(17)),
 
                 child: Row(
                   children: hotelsList.map((e) => HotelView(hotel: e)).toList(),
