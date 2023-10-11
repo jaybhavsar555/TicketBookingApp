@@ -94,7 +94,7 @@ class MyHomePage extends StatelessWidget {
                   padding: EdgeInsets.only(left: AppLayout.getHeight(17)),
                   child:
                   Row(
-                    children: ticketInfo.map((ticket) => TicketView(ticket: ticket)).toList(),
+                    children: ticketInfo.map((ticket) => TicketView(ticket: ticket,isColor: null,)).toList(),
                   ),
               ),
               Container(

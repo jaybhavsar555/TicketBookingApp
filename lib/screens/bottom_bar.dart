@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ticketbookapp/screens/home_screen.dart';
 import 'package:ticketbookapp/screens/search_screen.dart';
+import 'package:ticketbookapp/screens/ticket_screen.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ static int  _selectedItemIndex=0;
     // const Text("Home"), //0
     const MyHomePage(),
     const SearchScreen(), //1
-    const Text("Ticket"), //2
+    const TicketScreen(), //2
     const Text("Profile"), //3
 
   ];
