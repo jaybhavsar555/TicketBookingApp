@@ -39,6 +39,7 @@ dependencies:
   get:
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -49,6 +50,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  barcode: ^2.2.4
+  barcode_widget: ^2.0.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:ticketbookapp/screens/ticket_view.dart';
+import 'package:ticketbookapp/widget/ticket_view.dart';
 import 'package:ticketbookapp/utils/app_layout.dart';
 import 'package:ticketbookapp/utils/app_style.dart';
 import 'package:ticketbookapp/utils/hotel_info_list.dart';
@@ -113,7 +113,7 @@ class MyHomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Gap(15),
+              const Gap(15),
                //for hotels list
                SingleChildScrollView(
                 scrollDirection: Axis.horizontal,

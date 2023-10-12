@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticketbookapp/utils/app_layout.dart';
@@ -133,7 +132,7 @@ class SearchScreen extends StatelessWidget {
                        decoration: BoxDecoration(
                            shape: BoxShape.circle,
                            color: Colors.transparent,
-                           border: Border.all(color: Color(0xFF189999) ,width: 18)
+                           border: Border.all(color: const Color(0xFF189999) ,width: 18)
                        ) ,
                      ))
                     ],

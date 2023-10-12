@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticketbookapp/utils/app_layout.dart';
@@ -38,16 +37,16 @@ class HotelView extends StatelessWidget {
               )
             ),
           ),
-          Gap(10),
+          const Gap(10),
           Text("${hotel['hotel_name']}",
           style: Styles.textHeadStyle2.copyWith(color: Styles.kakiColor)
           ),
-          Gap(5),
+          const Gap(5),
           Text("${hotel['destination']}",
               style: Styles.textHeadStyle3.copyWith(color:Colors.white)
           ),
-          Gap(8),
-          Text("\₹${hotel['price']}/night",
+          const Gap(8),
+          Text("₹${hotel['price']}/night",
               style: Styles.textHeadStyle2.copyWith(color:Styles.kakiColor)
           ),
         ],
