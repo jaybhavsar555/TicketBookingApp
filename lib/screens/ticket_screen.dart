@@ -20,11 +20,10 @@ class TicketScreen extends StatelessWidget {
     return  Scaffold(
       backgroundColor: Styles.bgColor,
       body: Stack(
-
         children: [
           ListView(
             padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(10),
-                horizontal: AppLayout.getWidth(20),
+                horizontal: AppLayout.getWidth(15),
             ),
             
 
@@ -166,7 +165,38 @@ class TicketScreen extends StatelessWidget {
                 child: TicketView(ticket: ticketInfo[0],),
               ),
             ],
+          ),
+          Positioned(
+            left: AppLayout.getHeight(22),
+            top:AppLayout.getHeight(295),
+            child: Container(
+              padding: EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Styles.textColor,width: 2),
+              ),
+              child: CircleAvatar(
+                maxRadius: 4,
+                backgroundColor: Styles.textColor,
+              ),
+            ),
+          ),
+          Positioned(
+            right: AppLayout.getHeight(22),
+            top:AppLayout.getHeight(295),
+            child: Container(
+              padding: EdgeInsets.all(3),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Styles.textColor,width: 2),
+              ),
+              child: CircleAvatar(
+                maxRadius: 4,
+                backgroundColor: Styles.textColor,
+              ),
+            ),
           )
+
         ],
       ),
     );
