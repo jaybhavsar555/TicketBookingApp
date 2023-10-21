@@ -66,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                             shape: BoxShape.circle,
                             color: Color(0xFF526799),
                           ),
-                          child: Icon(FluentIcons.shield_12_filled,
+                          child: const Icon(FluentIcons.shield_12_filled,
                               color: Colors.white, size: 15),
                         ),
                         Gap(AppLayout.getHeight(7)),
@@ -77,18 +77,7 @@ class ProfileScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Column(
-                          children: [
-                            InkWell(
-                              child: Text("Edit", style: TextStyle(
-                                color: Styles.primaryColor,
-                                fontWeight: FontWeight.w400,
 
-                              ),
-                              ),
-                            )
-                          ],
-                        ),
                       ],
                     ),
 
@@ -96,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
 
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   InkWell(
@@ -104,9 +93,9 @@ class ProfileScreen extends StatelessWidget {
                       Fluttertoast.showToast(
                           msg: "Now u can edit...",
                           toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
+                          gravity: ToastGravity.BOTTOM,
                           timeInSecForIosWeb: 1,
-                          textColor: Colors.white,
+                          textColor: Colors.grey,
                           fontSize: 16.0
                       );
                     },
@@ -116,14 +105,78 @@ class ProfileScreen extends StatelessWidget {
 
                     ),
                     ),
-                  )
+                  ),
                 ],
               ),
 
             ],
           ),
+          Gap(AppLayout.getHeight(25)),
+          Stack(
+            children: [
+              Container(
+                height: AppLayout.getHeight(93),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Styles.primaryColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              Positioned(
+                right: -44,
+                top: -39,
+                child: Container(
+                  padding:  EdgeInsets.all(AppLayout.getHeight(33)),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.lightBlueAccent,width: 18,),
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: AppLayout.getHeight(30),vertical: AppLayout.getHeight(20)),
+                child: Row(
 
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
+                  children: [
+                    CircleAvatar(
+                    maxRadius: 25,
+                      backgroundColor: Colors.white,
+                    child: Icon(
+                      FluentIcons.lightbulb_filament_16_filled,
+                      color: Styles.primaryColor,
+                      size: 27,
+                    ),
+                     ),
+                    Gap(AppLayout.getHeight(20)),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        Text("You\'v got new reward ",
+                          style: Styles.textHeadStyle2.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+
+                        Text("You have 100 Flights this year", style: Styles.textHeadStyle2.copyWith(
+                        color: Colors.white.withOpacity(0.8),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                        ),
+                        ),
+                      ],
+                    )
+
+                  ],
+                ),
+              )
+            ],
+          )
 
         ],
       ),
