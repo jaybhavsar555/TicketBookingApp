@@ -2,6 +2,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
+import 'package:ticketbookapp/widget/customer_ticketLayout.dart';
+import 'package:ticketbookapp/widget/horizontal_line_widget.dart';
+
 
 import '../utils/app_layout.dart';
 import '../utils/app_style.dart';
@@ -57,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(100),
                       color: const Color(0xFFFEF4F3),
                     ),
-                    padding: EdgeInsets.symmetric(vertical: 3,horizontal: 3),
+                    padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 3),
                     child: Row(
                       children: [
                         Container(
@@ -176,8 +179,92 @@ class ProfileScreen extends StatelessWidget {
                 ),
               )
             ],
-          )
+          ),
+          Gap(AppLayout.getHeight(7)),
+          Text("Accumulated miles" ,style: Styles.textStyle1,),
+          Gap(AppLayout.getHeight(12)),
+          Container(
+            padding: EdgeInsets.all(AppLayout.getHeight(15)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: Styles.bgColor,
+              boxShadow:[ BoxShadow(
+                color: Colors.grey.shade200,
+                blurRadius: 2,
+                spreadRadius: 2
 
+              )]
+            ),
+            child: Column(
+              children: [
+                Gap(AppLayout.getHeight(10)),
+                 Text("198709", style: TextStyle(fontSize: 40, color: Styles.textColor, fontWeight: FontWeight.w400
+                 ),),
+
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                   Text("Miles accured",style: Styles.textHeadStyle4.copyWith(color: Colors.grey),),
+                   Text("23 Oct 2023",style: Styles.textHeadStyle4.copyWith(color: Colors.grey),),
+                 ],
+               ),
+                Gap(AppLayout.getHeight(5)),
+                Divider(color: Colors.grey.shade300,),
+                Gap(AppLayout.getHeight(4)),
+
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children:  [
+                    CustomTicketLayout(firstText: "23 000", secondText:"Miles", alignment: CrossAxisAlignment.start),
+                    CustomTicketLayout(firstText: "AirLin India", secondText:"Recevied from", alignment: CrossAxisAlignment.end),
+                  ],
+                ),
+
+                Gap(AppLayout.getHeight(12)),
+                const HorizontalLineWidget(section: 12, isColor: false,),
+                Gap(AppLayout.getHeight(12)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTicketLayout(firstText: "21 00", secondText:"Miles", alignment: CrossAxisAlignment.start),
+                    CustomTicketLayout(firstText: "IndiGO", secondText:"Recevied from", alignment: CrossAxisAlignment.end),
+                  ],
+                ),
+                Gap(AppLayout.getHeight(12)),
+                const HorizontalLineWidget(section: 12, isColor: false,),
+                Gap(AppLayout.getHeight(12)),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTicketLayout(firstText: "41 000", secondText:"Miles", alignment: CrossAxisAlignment.start),
+                    CustomTicketLayout(firstText: "Air India", secondText:"Recevied from", alignment: CrossAxisAlignment.end),
+                  ],
+                ),
+
+              ],
+            ),
+          ),
+          Gap(AppLayout.getHeight(10)),
+          InkWell(
+            onTap: (){
+              Fluttertoast.showToast(
+                  msg: "Wait..",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  textColor: Colors.grey,
+                  fontSize: 16.0
+              );
+            },
+            child: Center(
+              child: Text(
+                "How to get more miles",
+               style: Styles.textStyle1.copyWith(
+                 color: Colors.blue
+               ),
+              ),
+            ),
+          ),
         ],
       ),
     );
