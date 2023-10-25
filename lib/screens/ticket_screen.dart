@@ -48,7 +48,7 @@ class TicketScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal:15,vertical: 10),
                 margin: const EdgeInsets.only(left: 25,right: 17),
                 // width: 30,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
 
                 ),
@@ -114,7 +114,7 @@ class TicketScreen extends StatelessWidget {
 
                           children: [
                             CustomTicketLayout(
-                              firstText: "\₹2000",
+                              firstText: "₹2000",
                               secondText: "Price",
                               alignment: CrossAxisAlignment.end,
                             ),
@@ -170,7 +170,7 @@ class TicketScreen extends StatelessWidget {
             left: AppLayout.getHeight(22),
             top:AppLayout.getHeight(295),
             child: Container(
-              padding: EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: Styles.textColor,width: 2),
@@ -185,7 +185,7 @@ class TicketScreen extends StatelessWidget {
             right: AppLayout.getHeight(22),
             top:AppLayout.getHeight(295),
             child: Container(
-              padding: EdgeInsets.all(3),
+              padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: Styles.textColor,width: 2),

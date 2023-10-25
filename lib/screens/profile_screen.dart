@@ -160,7 +160,7 @@ class ProfileScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        Text("You\'v got new reward ",
+                        Text("You'v got new reward ",
                           style: Styles.textHeadStyle2.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold),
@@ -223,7 +223,7 @@ class ProfileScreen extends StatelessWidget {
                 Gap(AppLayout.getHeight(12)),
                 const HorizontalLineWidget(section: 12, isColor: false,),
                 Gap(AppLayout.getHeight(12)),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomTicketLayout(firstText: "21 00", secondText:"Miles", alignment: CrossAxisAlignment.start),

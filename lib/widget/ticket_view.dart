@@ -133,7 +133,7 @@ class TicketView extends StatelessWidget {
                   Expanded(
                       child: Padding(
                         padding:  EdgeInsets.all(AppLayout.getHeight(12)),
-                        child: HorizontalLineWidget(section: 15,),
+                        child: const HorizontalLineWidget(section: 15,),
                       )
                   ),
                   SizedBox(

@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
                        Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Good Morning",style: Styles.textHeadStyle3),
+                          Text("Good Morningg",style: Styles.textHeadStyle3),
                           const Gap(2),
                           Text("Book Tickets",style:Styles.textHeadStyle1),
                         ],
