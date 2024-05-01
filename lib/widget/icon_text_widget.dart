@@ -7,24 +7,28 @@ import '../utils/app_layout.dart';
 class IconTextWidget extends StatelessWidget {
   final text;
   final icon;
-  const IconTextWidget({Key? key, required this.text , required this.icon}) : super(key: key);
+  const IconTextWidget({super.key, required this.text , required this.icon});
 
   @override
   Widget build(BuildContext context) {
-    return   Container(
-      padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(12),horizontal: AppLayout.getWidth(10)),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppLayout.getHeight(20)),
-          color: Colors.white
-      ),
-      child:  Row(
-        children: [
+    return   Builder(
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(12),horizontal: AppLayout.getWidth(10)),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppLayout.getHeight(20)),
+              color: Colors.white
+          ),
+          child:  Row(
+            children: [
 
-          Icon(icon,color: Colors.grey),
-          Gap(AppLayout.getHeight(10)),
-          Text(text,style: Styles.textStyle1,),
-        ],
-      ),
+              Icon(icon,color: Colors.grey),
+              Gap(AppLayout.getHeight(10)),
+              Text(text,style: Styles.textStyle1,),
+            ],
+          ),
+        );
+      }
     );
   }
 }

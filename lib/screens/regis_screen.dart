@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
+import 'package:ticketbookapp/model/user_model.dart';
+import 'package:ticketbookapp/screens/bottom_bar.dart';
 import 'package:ticketbookapp/screens/login_screen.dart';
 
-import '../utils/app_layout.dart';
 import '../utils/app_style.dart';
 
 class RegisterationScreen extends StatefulWidget {
@@ -15,6 +18,9 @@ class RegisterationScreen extends StatefulWidget {
 
 class _RegisterationScreenState extends State<RegisterationScreen> {
   final _formkey= GlobalKey<FormState>();
+
+  final _auth = FirebaseAuth.instance;
+
 
   final TextEditingController firstnameController=TextEditingController();
   final TextEditingController lastnameController=TextEditingController();
@@ -33,14 +39,23 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
 
       controller: firstnameController,
       keyboardType: TextInputType.name,
-      // validator: (){},
+      validator: (value){
+        RegExp regex = RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("FirstName cannot be empty!");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid FirstName(Min. 3 Character)");
+        }
+        return null;
+      },
       onSaved: (value){
         firstnameController.text=value!;
       },
       textInputAction: TextInputAction.next,
       decoration:  InputDecoration(
-        prefixIcon: Icon(Icons.account_circle),
-        contentPadding:EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.account_circle),
+        contentPadding:const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "First name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -54,14 +69,23 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
 
       controller: lastnameController,
       keyboardType: TextInputType.name,
-      // validator: (){},
+      validator: (value){
+        RegExp regex = RegExp(r'^.{3,}$');
+        if (value!.isEmpty) {
+          return ("LastName cannot be empty!");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid lastName(Min. 3 Character)");
+        }
+        return null;
+      },
       onSaved: (value){
         lastnameController.text=value!;
       },
       textInputAction: TextInputAction.next,
       decoration:  InputDecoration(
-        prefixIcon:Icon(Icons.account_circle),
-        contentPadding:EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon:const Icon(Icons.account_circle),
+        contentPadding:const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Last name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -75,14 +99,24 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
 
       controller: emailController,
       keyboardType: TextInputType.name,
-      // validator: (){},
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter Your Email");
+        }
+        // reg expression for email validation
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+            .hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+        return null;
+      },
       onSaved: (value){
         emailController.text=value!;
       },
       textInputAction: TextInputAction.next,
       decoration:  InputDecoration(
-        prefixIcon: Icon(Icons.email),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.email),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -96,14 +130,23 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
       autofocus: false,
       obscureText: true,
       controller: passwordController,
-      // validator: (){},
+      validator: (value) {
+        RegExp regex = RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Password(Min. 6 Character)");
+        }
+        return null;
+      },
       onSaved: (value){
         passwordController.text=value!;
       },
       textInputAction: TextInputAction.next,
       decoration:  InputDecoration(
-        prefixIcon: Icon(Icons.key),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.key),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -111,18 +154,24 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
       ),
     );
 
+    //cnf password field
     final TextFormField cnfpasswordfield= TextFormField(
       autofocus: false,
       obscureText: true,
       controller: cnfpasswordController,
-      // validator: (){},
+       validator: (value){
+        if(cnfpasswordController.text != passwordController.text){
+          return "Password dont match";
+        }
+        return null;
+       },
       onSaved: (value){
         cnfpasswordController.text=value!;
       },
       textInputAction: TextInputAction.done,
       decoration:  InputDecoration(
-        prefixIcon: Icon(Icons.key),
-        contentPadding:  EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.key),
+        contentPadding:  const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Confirm Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -131,17 +180,20 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
     );
 
 
+
     //registration btn
     final signup=Container(
 
       child: Material(
         elevation: 5,
         borderRadius: BorderRadius.circular(30),
-        color: Color(0xD91130CE),
+        color: const Color(0xD91130CE),
         child: MaterialButton(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           minWidth: MediaQuery.of(context).size.width,
-          onPressed: (){},
+          onPressed: (){
+            signUp(emailController.text, passwordController.text);
+          },
           child: Text("SignUp",style: Styles.textStyle1.copyWith(color: Colors.white ,fontSize: 17),),
         ),
       ),
@@ -154,9 +206,9 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
           leading: IconButton(
             onPressed: (){
               //to navigate to the root
-              Navigator.push(context,MaterialPageRoute(builder: (context)=> LoginScreen()));
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> const LoginScreen()));
             },
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
             
           ),
       ),
@@ -176,17 +228,23 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                         height: 120,
                         child: Image.asset("assets/images/ticket.png",fit: BoxFit.contain,),
                       ),
-                      Gap(AppLayout.getHeight(40)),
+                      const Gap(40),
+                      // Gap(AppLayout.getHeight(40)),
                       firstnamefield,
-                      Gap(AppLayout.getHeight(10)),
+                      const Gap(10),
+                      // Gap(AppLayout.getHeight(10)),
                       lastnamefield,
-                      Gap(AppLayout.getHeight(10)),
+                      const Gap(10),
+                      // Gap(AppLayout.getHeight(10)),
                       emailfield,
-                      Gap(AppLayout.getHeight(10)),
+                      const Gap(10),
+                      // Gap(AppLayout.getHeight(10)),
                       passwordfield,
-                      Gap(AppLayout.getHeight(10)),
+                      const Gap(10),
+                      // Gap(AppLayout.getHeight(10)),
                       cnfpasswordfield,
-                      Gap(AppLayout.getHeight(20)),
+                      const Gap(20),
+                      // Gap(AppLayout.getHeight(20)),
                       signup,
                     ],
                   )
@@ -196,5 +254,47 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
         ),
       ),
     );
+
+
   }
+
+  void signUp(String email, String password) async {
+    if (_formkey.currentState!.validate()) {
+      await _auth.createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => {
+          postDetailsToFirestore()
+          })
+          .catchError((e){
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
+
+    }
+
+  void postDetailsToFirestore() async {
+    FirebaseFirestore firebaseFirestore=FirebaseFirestore.instance;
+    User? user = _auth.currentUser;
+    UserModel userModel=UserModel();
+    userModel.email=user!.email;
+    userModel.uid=user.uid;
+    userModel.firstName= firstnameController.text;
+    userModel.lastName=lastnameController.text;
+    userModel.password=passwordController.text;
+
+    //convert the password to the hashable using sha256
+
+    await firebaseFirestore.collection("users").doc(user.uid).set(userModel.toMap());
+    
+    Fluttertoast.showToast(msg: "Account Created Successfully!!");
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>const BottomBar()),
+            (route) => false);
+
+  }
+
+
+
+
+
+
+
 }

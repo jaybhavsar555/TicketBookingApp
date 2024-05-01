@@ -8,18 +8,22 @@ class CustomTicketLayout extends StatelessWidget {
   final CrossAxisAlignment alignment;
   final String firstText;
   final String secondText;
-  const CustomTicketLayout({Key? key,required this.firstText, required this.secondText, required this.alignment}) : super(key: key);
+  const CustomTicketLayout({super.key,required this.firstText, required this.secondText, required this.alignment});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      crossAxisAlignment: alignment,
+    return  Builder(
+      builder: (context) {
+        return Column(
+          crossAxisAlignment: alignment,
 
-      children: [
-        Text(firstText,style: Styles.ticketTextStyle1.copyWith(color: Colors.black),),
-        Gap(AppLayout.getHeight(5)),
-        Text(secondText,style:Styles.textHeadStyle4.copyWith(color: Colors.grey)),
-      ],
+          children: [
+            Text(firstText,style: Styles.ticketTextStyle1.copyWith(color: Colors.black),),
+            Gap(AppLayout.getHeight(5)),
+            Text(secondText,style:Styles.textHeadStyle4.copyWith(color: Colors.grey)),
+          ],
+        );
+      }
     );
   }
 }

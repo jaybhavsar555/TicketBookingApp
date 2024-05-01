@@ -8,7 +8,7 @@ import 'package:ticketbookapp/utils/hotel_info_list.dart';
 import 'hotels_view.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class MyHomePage extends StatelessWidget {
 
             children: [
             Container(
+
               padding: const EdgeInsets.symmetric(horizontal: 15),
               // color: Colors.grey,
               child:  Column(
@@ -31,13 +32,13 @@ class MyHomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Good Morningg",style: Styles.textHeadStyle3),
-                          const Gap(2),
+                          // const Gap(2),
                           Text("Book Tickets",style:Styles.textHeadStyle1),
                         ],
                       ),
                      Container(
-                       width: AppLayout.getWidth(50),
-                       height: AppLayout.getHeight(50),
+                       width: 50,
+                       height: 50,
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(10),
                          image: const DecorationImage(
@@ -45,10 +46,7 @@ class MyHomePage extends StatelessWidget {
                              image: AssetImage("assets/images/ticket.png")
                          )
                        ),
-
                      ),
-
-
                     ],
                   ),
                    const Gap(30),
@@ -58,7 +56,7 @@ class MyHomePage extends StatelessWidget {
                        color: Colors.white
 
                      ),
-                     padding:  EdgeInsets.symmetric(horizontal: AppLayout.getWidth(12),vertical: AppLayout.getHeight(12)),
+                     padding:  const EdgeInsets.symmetric(horizontal: 12,vertical: 12),
                      child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -88,44 +86,55 @@ class MyHomePage extends StatelessWidget {
             ),
 
               const Gap(15),
-               // for ticket
-               SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
+              //  for ticket
+            Builder(
+              builder: (context) {
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.only(left: AppLayout.getHeight(17)),
                   child:
                   Row(
                     children: ticketInfo.map((ticket) => TicketView(ticket: ticket,isColor: null,)).toList(),
                   ),
-              ),
-              Container(
-                padding:  EdgeInsets.symmetric(horizontal: AppLayout.getWidth(20)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                );
+              }
+            ),
+            Builder(
+              builder: (context) {
+                return Container(
+                      padding:  const EdgeInsets.symmetric(horizontal:20),
+                      child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
                     Text("Hotels", style: Styles.textHeadStyle2),
                     InkWell(
-                      onTap: (){
-                        print("To see the hotel");
-                      },
-                      child: Text("view all", style: Styles.textStyle1),
+                    onTap: (){
+                    print("To see the hotel");
+                    },
+                child: Text("view all", style: Styles.textStyle1),
 
-                    ),
-                  ],
                 ),
-              ),
-              const Gap(15),
-               //for hotels list
-               SingleChildScrollView(
+                ],
+                ),
+                );
+              }
+            ),
+            const Gap(15),
+            //for hotels list
+            Builder(
+              builder: (context) {
+                return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.only(left: AppLayout.getHeight(17)),
+                padding: const EdgeInsets.only(left: 17),
 
                 child: Row(
-                  children: hotelsList.map((e) => HotelView(hotel: e)).toList(),
+                children: hotelsList.map((e) => HotelView(hotel: e)).toList(),
                 ),
-              )
+                );
+              }
+            )
             ],
-          ),
-
-    );
+            ),
+            );
   }
 }
