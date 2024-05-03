@@ -12,6 +12,7 @@ class CustomTicketLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLayout appLayout=AppLayout(context);
     return  Builder(
       builder: (context) {
         return Column(
@@ -19,7 +20,7 @@ class CustomTicketLayout extends StatelessWidget {
 
           children: [
             Text(firstText,style: Styles.ticketTextStyle1.copyWith(color: Colors.black),),
-            Gap(AppLayout.getHeight(5)),
+            Gap(appLayout.getHeight(5)),
             Text(secondText,style:Styles.textHeadStyle4.copyWith(color: Colors.grey)),
           ],
         );

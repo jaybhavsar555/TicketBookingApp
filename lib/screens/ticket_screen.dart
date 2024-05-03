@@ -15,7 +15,8 @@ class TicketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final size= AppLayout.getSize(context);
+    final AppLayout appLayout=AppLayout(context);
+    // final size= appLayout.getSize();
 
     return  Scaffold(
       backgroundColor: Styles.bgColor,
@@ -24,24 +25,24 @@ class TicketScreen extends StatelessWidget {
           return Stack(
             children: [
               ListView(
-                padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(10),
-                    horizontal: AppLayout.getWidth(15),
+                padding: EdgeInsets.symmetric(vertical: appLayout.getHeight(10),
+                    horizontal: appLayout.getWidth(15),
                 ),
 
 
                 children: [
 
-                  Gap(AppLayout.getHeight(40)),
+                  Gap(appLayout.getHeight(40)),
 
                   Text("Tickets",style: Styles.textHeadStyle1,),
-                  Gap(AppLayout.getHeight(15)),
+                  Gap(appLayout.getHeight(15)),
                   //tab
                   const TicketTabWidget(firstTabText: "Upcoming", secondTabText: "Previous",),
 
-                  Gap(AppLayout.getHeight(20)),
+                  Gap(appLayout.getHeight(20)),
 
                   Container(
-                    padding: EdgeInsets.only(left: AppLayout.getHeight(25)),
+                    padding: EdgeInsets.only(left: appLayout.getHeight(25)),
                     child: TicketView(ticket: ticketInfo[0],isColor: true,),
                   ),
                   const SizedBox(height: 0.8,),
@@ -74,9 +75,9 @@ class TicketScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Gap(AppLayout.getHeight(20)),
+                        Gap(appLayout.getHeight(20)),
                         const HorizontalLineWidget(section: 10,isColor: false, width: 5),
-                        Gap(AppLayout.getHeight(20)),
+                        Gap(appLayout.getHeight(20)),
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children:  [
@@ -94,9 +95,9 @@ class TicketScreen extends StatelessWidget {
                         ),
 
 
-                        Gap(AppLayout.getHeight(20)),
+                        Gap(appLayout.getHeight(20)),
                         const HorizontalLineWidget(section: 10,isColor: false, width: 5),
-                        Gap(AppLayout.getHeight(20)),
+                        Gap(appLayout.getHeight(20)),
 
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,7 +126,7 @@ class TicketScreen extends StatelessWidget {
 
                           ],
                         ),
-                        Gap(AppLayout.getHeight(20)),
+                        Gap(appLayout.getHeight(20)),
                         const HorizontalLineWidget(section: 10,isColor: false, width: 5),
 
 
@@ -136,41 +137,41 @@ class TicketScreen extends StatelessWidget {
                   ),
                   //barcode
                   Container(
-                    margin:  EdgeInsets.only(left: AppLayout.getHeight(25),right: AppLayout.getHeight(17)),
+                    margin:  EdgeInsets.only(left: appLayout.getHeight(25),right: appLayout.getHeight(17)),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(AppLayout.getHeight(21)),
-                          bottomRight: Radius.circular(AppLayout.getHeight(21))),
+                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(appLayout.getHeight(21)),
+                          bottomRight: Radius.circular(appLayout.getHeight(21))),
                       color: Colors.white,
 
                     ),
                     child: Container(
-                    padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(10),
-                                horizontal: AppLayout.getWidth(20)),
+                    padding: EdgeInsets.symmetric(vertical: appLayout.getHeight(10),
+                                horizontal: appLayout.getWidth(20)),
                       // color: Colors.red,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(AppLayout.getHeight(15)),
+                        borderRadius: BorderRadius.circular(appLayout.getHeight(15)),
                         child: BarcodeWidget(
                           data: "https://github.com",
                           barcode: Barcode.code128(),
                           drawText: false,
                           color: Styles.textColor,
                           width: double.infinity,
-                          height:AppLayout.getHeight(70),
+                          height:appLayout.getHeight(70),
 
                         ),
                       ),
                     ),
                   ),
-                  Gap(AppLayout.getHeight(20)),
+                  Gap(appLayout.getHeight(20)),
                   Container(
-                    padding: EdgeInsets.only(left: AppLayout.getHeight(25)),
+                    padding: EdgeInsets.only(left: appLayout.getHeight(25)),
                     child: TicketView(ticket: ticketInfo[0],),
                   ),
                 ],
               ),
               Positioned(
-                left: AppLayout.getHeight(22),
-                top:AppLayout.getHeight(295),
+                left: appLayout.getHeight(22),
+                top:appLayout.getHeight(295),
                 child: Container(
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
@@ -184,8 +185,8 @@ class TicketScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                right: AppLayout.getHeight(22),
-                top:AppLayout.getHeight(295),
+                right: appLayout.getHeight(22),
+                top:appLayout.getHeight(295),
                 child: Container(
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(

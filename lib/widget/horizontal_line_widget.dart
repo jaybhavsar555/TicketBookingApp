@@ -11,6 +11,7 @@ class HorizontalLineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLayout appLayout=AppLayout(context);
     return Builder(
       builder: (context) {
         return LayoutBuilder(
@@ -19,7 +20,7 @@ class HorizontalLineWidget extends StatelessWidget {
               direction: Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate((constraints.constrainWidth()/section).floor(), (index) =>  SizedBox(
-                width: width,height: AppLayout.getHeight(1), child:  DecoratedBox(
+                width: width,height: appLayout.getHeight(1), child:  DecoratedBox(
                 decoration: BoxDecoration(
                     color: isColor==null? Colors.white: Colors.black38
                 ),

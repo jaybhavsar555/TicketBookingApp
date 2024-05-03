@@ -11,19 +11,20 @@ class IconTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLayout appLayout=AppLayout(context);
     return   Builder(
       builder: (context) {
         return Container(
-          padding: EdgeInsets.symmetric(vertical: AppLayout.getHeight(12),horizontal: AppLayout.getWidth(10)),
+          padding: EdgeInsets.symmetric(vertical: appLayout.getHeight(12),horizontal: appLayout.getWidth(10)),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppLayout.getHeight(20)),
+              borderRadius: BorderRadius.circular(appLayout.getHeight(20)),
               color: Colors.white
           ),
           child:  Row(
             children: [
 
               Icon(icon,color: Colors.grey),
-              Gap(AppLayout.getHeight(10)),
+              Gap(appLayout.getHeight(10)),
               Text(text,style: Styles.textStyle1,),
             ],
           ),

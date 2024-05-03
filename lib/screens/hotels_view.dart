@@ -9,15 +9,16 @@ class HotelView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size= AppLayout.getSize(context);
+    final AppLayout appLayout=AppLayout(context);
+    final size= appLayout.getSize();
     // print("${hotel['price']}");
     return  Builder(
       builder: (context) {
         return Container(
-          width:AppLayout.getWidth(size.width * 0.6) ,
-          height:AppLayout.getHeight(350) ,
-          margin: EdgeInsets.only(right: AppLayout.getHeight(13),top: AppLayout.getWidth(10)),
-          padding: EdgeInsets.all(AppLayout.getHeight(15)),
+          width:appLayout.getWidth(size.width * 0.6) ,
+          height:appLayout.getHeight(350) ,
+          margin: EdgeInsets.only(right: appLayout.getHeight(13),top: appLayout.getWidth(10)),
+          padding: EdgeInsets.all(appLayout.getHeight(15)),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
             color: Styles.primaryColor,
@@ -27,7 +28,7 @@ class HotelView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: AppLayout.getHeight(185),
+                height: appLayout.getHeight(185),
                 decoration:  BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Styles.primaryColor,
