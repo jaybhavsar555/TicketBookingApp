@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gap/gap.dart';
+import 'package:ticketbookapp/screens/login_screen.dart';
 import 'package:ticketbookapp/widget/customer_ticketLayout.dart';
 import 'package:ticketbookapp/widget/horizontal_line_widget.dart';
 
@@ -113,6 +115,19 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     ),
                   ),
+                  GestureDetector(
+                    onTap: (){
+                      FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const LoginScreen()));
+                    },
+                    child: Text("SignOut",
+                        style: TextStyle(
+                      color: Styles.textColor,
+                      fontWeight: FontWeight.w400,
+
+                    )),
+                  )
                 ],
               ),
 
@@ -262,8 +277,9 @@ class ProfileScreen extends StatelessWidget {
                   gravity: ToastGravity.BOTTOM,
                   timeInSecForIosWeb: 1,
                   textColor: Colors.grey,
-                  fontSize: 16.0
+                  fontSize: 16.0,
               );
+
             },
             child: Center(
               child: Text(

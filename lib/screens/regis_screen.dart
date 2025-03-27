@@ -198,6 +198,8 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
         ),
       ),
     );
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -281,7 +283,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
     userModel.lastName=lastnameController.text;
     userModel.password=passwordController.text;
 
-    //convert the password to the hashable using sha256
+    //convert the password to the hashable using sha256//
 
     await firebaseFirestore.collection("users").doc(user.uid).set(userModel.toMap());
     

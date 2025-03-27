@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:ticketbookapp/widget/ticket_view.dart';
@@ -14,18 +15,20 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    //firebase
+    final _auth = FirebaseAuth.instance;
+
     final AppLayout appLayout=AppLayout(context);
     return  Scaffold(
           backgroundColor: Styles.bgColor,
           body: ListView(
 
             children: [
+
               Container(
-
                 padding: const EdgeInsets.symmetric(horizontal: 15),
-                // color: Colors.grey,
                 child:  Column(
-
                   children: [
                      Gap(appLayout.getHeight(60)),
                     Row(
@@ -34,14 +37,15 @@ class MyHomePage extends StatelessWidget {
                          Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Good Morningg",style: Styles.textHeadStyle3),
+                            Text("Good Morning,",style: Styles.textHeadStyle3),
+                            // Text(,style: Styles.textHeadStyle3),
                             // const Gap(2),
                             Text("Book Tickets",style:Styles.textHeadStyle1),
                           ],
                         ),
                        Container(
-                         width: 50,
-                         height: 50,
+                         width: appLayout.getWidth(50),
+                         height: appLayout.getHeight(50),
                          decoration: BoxDecoration(
                            borderRadius: BorderRadius.circular(10),
                            image: const DecorationImage(
@@ -117,6 +121,7 @@ class MyHomePage extends StatelessWidget {
               const Gap(15),
               //for hotels list
               SingleChildScrollView(
+
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.only(left: 17),
 
